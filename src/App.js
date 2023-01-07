@@ -11,14 +11,14 @@ import styled from "styled-components";
 // http://react.school/material-ui/templates
 
 const theme = {
-  blue: {
-    default: "#3f51b5",
-    hover: "#283593"
-  },
-  pink: {
-    default: "#e91e63",
-    hover: "#ad1457"
-  }
+    blue: {
+        default: "#3f51b5",
+        hover: "#283593",
+    },
+    pink: {
+        default: "#e91e63",
+        hover: "#ad1457",
+    },
 };
 
 const Button = styled.button`
@@ -42,18 +42,18 @@ const Button = styled.button`
 `;
 
 Button.defaultProps = {
-  theme: "blue"
+    theme: "blue",
 };
 
 function clickMe() {
-  alert("You clicked me!");
+    alert("You clicked me!");
 }
 
 const ButtonToggle = styled(Button)`
   opacity: 0.7;
   ${({ active }) =>
-    active &&
-    `
+        active &&
+        `
     opacity: 1; 
   `}
 `;
@@ -68,70 +68,65 @@ const Tab = styled.button`
   border-bottom: 2px solid transparent;
   transition: ease border-bottom 250ms;
   ${({ active }) =>
-    active &&
-    `
+        active &&
+        `
     border-bottom: 2px solid black;
     opacity: 1;
   `}
 `;
 
 function TabGroup() {
-  const [active, setActive] = useState(types[0]);
-  return (
-    <>
-      <div>
-        {types.map((type) => (
-          <Tab
-            key={type}
-            active={active === type}
-            onClick={() => setActive(type)}
-          >
-            {type}
-          </Tab>
-        ))}
-      </div>
-      <p />
-      <p> Your payment selection: {active} </p>
-    </>
-  );
+    const [active, setActive] = useState(types[0]);
+    return (
+        <>
+            <div>
+                {types.map((type) => (
+                    <Tab
+                        key={type}
+                        active={active === type}
+                        onClick={() => setActive(type)}
+                    >
+                        {type}
+                    </Tab>
+                ))}
+            </div>
+            <p />
+            <p> Your payment selection: {active} </p>
+        </>
+    );
 }
 
 const types = ["Cash", "Credit Card", "Bitcoin"];
 
 function ToggleGroup() {
-  const [active, setActive] = useState(types[0]);
-  return (
-    <div>
-      {types.map((type) => (
-        <ButtonToggle active={active === type} onClick={() => setActive(type)}>
-          {type}
-        </ButtonToggle>
-      ))}
-    </div>
-  );
+    const [active, setActive] = useState(types[0]);
+    return (
+        <div>
+            {types.map((type) => (
+                <ButtonToggle active={active === type} onClick={() => setActive(type)}>
+                    {type}
+                </ButtonToggle>
+            ))}
+        </div>
+    );
 }
 
 export default function App() {
-  return (
-    <>
-      <div>
-        <Button onClick={clickMe}>Button</Button>
-      </div>
-      <div>
-        <Button theme="pink" onClick={clickMe}>
-          Pink theme
-        </Button>
-      </div>
-      <div>
-        <Button disabled onClick={clickMe}>
-          Disabled
-        </Button>
-      </div>
-      <a href="https://react.school" target="_blank">
-        <Button>Link</Button>
-      </a>
-      <ToggleGroup />
-      <TabGroup />
-    </>
-  );
+    return (
+        <>
+            <div>
+                <Button onClick={clickMe}>Button</Button>
+            </div>
+            <div>
+                <Button theme="pink" onClick={clickMe}>
+                    WAF
+                </Button>
+            </div>
+            <div>
+                <Button onClick={clickMe}>
+                    IAM
+                </Button>
+            </div>
+        </>
+    );
 }
