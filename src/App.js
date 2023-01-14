@@ -13,12 +13,12 @@ import styled from "styled-components";
 const theme = {
   blue: {
     default: "#3f51b5",
-    hover: "#283593"
+    hover: "#283593",
   },
   pink: {
     default: "#e91e63",
-    hover: "#ad1457"
-  }
+    hover: "#ad1457",
+  },
 };
 
 const Button = styled.button`
@@ -42,11 +42,31 @@ const Button = styled.button`
 `;
 
 Button.defaultProps = {
-  theme: "blue"
+  theme: "blue",
 };
-
+const payload = {
+  key1: "value1",
+};
+const apiEndpoint = "https://fetpttl8n4.execute-api.us-east-1.amazonaws.com/";
 function clickMe() {
   alert("You clicked me!");
+  fetch(
+    "https://dwrk6xar4dykxmsw5dflrfhjwq0lnlkd.lambda-url.us-east-1.on.aws/",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 const ButtonToggle = styled(Button)`
@@ -119,19 +139,12 @@ export default function App() {
       </div>
       <div>
         <Button theme="pink" onClick={clickMe}>
-          Pink theme
+          WAF
         </Button>
       </div>
       <div>
-        <Button disabled onClick={clickMe}>
-          Disabled
-        </Button>
+        <Button onClick={clickMe}>IAM</Button>
       </div>
-      <a href="https://react.school" target="_blank">
-        <Button>Link</Button>
-      </a>
-      <ToggleGroup />
-      <TabGroup />
     </>
   );
 }
